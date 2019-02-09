@@ -1,3 +1,5 @@
+package com;
+
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.servlet.ServletContextHandler;
 import org.eclipse.jetty.servlet.ServletHolder;
@@ -22,8 +24,8 @@ public class App {
         server.join();
     }
 
-    public static void main1(String[] args) throws Exception {
-        System.out.println("Calculator");
+    public static void main6(String[] args) throws Exception {
+        System.out.println("com.Calculator");
         ServletContextHandler sh = new ServletContextHandler();
         sh.addServlet(new ServletHolder(new Calculator()), "/admin/*");
         Server server = new Server(80);
@@ -32,8 +34,8 @@ public class App {
         server.join();
     }
 
-    public static void main2(String[] args) throws Exception {
-        System.out.println("Welcome!");
+    public static void main7(String[] args) throws Exception {
+        System.out.println("com.Welcome!");
         ServletContextHandler sc = new ServletContextHandler();
         sc.addServlet(new ServletHolder(new Welcome()), "/admin/*");
         Server server1 = new Server(80);
@@ -43,7 +45,7 @@ public class App {
     }
 
     public static void main3(String[] args) throws Exception {
-        System.out.println("Forma");
+        System.out.println("com.Forma");
         ServletContextHandler sch = new ServletContextHandler();
         sch.addServlet(new ServletHolder(new Forma()), "/admin/*");
         Server ser = new Server(80);
@@ -52,7 +54,7 @@ public class App {
         ser.join();
     }
     public static void main4(String[] args) throws Exception {
-        System.out.println("ToForma");
+        System.out.println("com.ToForma");
         ServletContextHandler sch = new ServletContextHandler();
         sch.addServlet(new ServletHolder(new ToForma()), "/admin/*");
         Server ser = new Server(80);
@@ -61,7 +63,7 @@ public class App {
         ser.join();
     }
 
-    public static void main(String[] args) throws Exception {
+    public static void main5(String[] args) throws Exception {
         System.out.println("Easy method");
         int parametr = 0;
         String name = null;
@@ -91,5 +93,22 @@ public class App {
                 start();
                 join();
             }};
+    }
+    public static void main(String[] args) throws Exception {
+        /*System.out.println("com.UserJava");
+        appServlet(new UserJavaServlet());*/
+        System.out.println("com.Welcome");
+        appServlet(new Welcome());
+
+    }
+
+
+    private static void appServlet(Welcome obj) throws Exception {
+        ServletContextHandler sch = new ServletContextHandler();
+        sch.addServlet(new ServletHolder(obj), "/admin/*");
+        Server ser = new Server(80);
+        ser.setHandler(sch);
+        ser.start();
+        ser.join();
     }
 }
